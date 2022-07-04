@@ -11,7 +11,7 @@ class MainWidget(Widget):
 
 
 class FirstKivyApp(App):
-    # This class will inherit from the 'App' class defined in Kivy
+    # This class will inherit from the 'App' class defined in the "kivy.app" library
     pass
 
 
