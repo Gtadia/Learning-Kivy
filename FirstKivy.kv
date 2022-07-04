@@ -1,7 +1,7 @@
 MainWidget:
 
 
-<MainWidget>: # The definition of our main widget
+<MainWidget>: # The definition/characterics of our main widget
     Button:
         text: "Hello" # The default position of the button is (0, 0) from the bottom left corner...
         size: 400, 200 # The default size is 100px by 100px
@@ -16,10 +16,12 @@ MainWidget:
         text: "Hello 3"
         size: "100dp", "80dp"
         pos: "100dp", "300dp"
-        color: 0, 1, 0, 1
+        color: 0, 1, 0, 1 # For buttons, it only changes the color of the text, not the button itself
 
     Label: # Label only displays text on the screen (and you use the same basic properties as the button)
         text: "Label"
         size: "100dp", "90dp"
         pos: "200dp", "500dp"
         color: 0, 1, 0, 1    # (from 0 to 100%/0 to 1) (alpha (a) is visibility/transparency)
+
+    
