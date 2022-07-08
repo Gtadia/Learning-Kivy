@@ -1,0 +1,59 @@
+#:kivy 2.1.0
+# Because we're accessing a custom widget, we have to open up our angular brackets and put the name of the class inside of it
+# NOTE: NEVER add a comment AFTER the colon (EX: "Button: # This is a button") or else you will get a "NoneType" object error.
+<CustomWidget>: 
+    # We can put the attributes of the button side of here
+    canvas: 
+        Rectangle: 
+            #1 
+            #2
+            # pos: 50, 50     #3
+            pos: self.x + 50, self.y + 50   #4
+            # pos: root.x + 50, root.y + 50     # 5 
+            size: 100, 100      #6
+
+    Button:  
+    # Button is a widget/a child of CustonWidget
+        # pos: 50, 50     # 7
+        # pos: self.x + 50, self.y + 50     # 8
+        pos: root.x + 50, root.y + 50
+        size_hint: None, None
+        size: 200, 200
+        background_color: 0, 1, 0, 1    # 8
+
+
+
+# 1
+# This rectangle inside of the canvas is not a widget, therefore it doesn't really have a size_hint attribute
+
+# 2
+# We're going to have to use the "self" and the "root" keywords to know exactly how big and where we want this item to 
+# be relative to the parent.
+
+# 3
+# This position is relative to the absolute origin (0, 0)
+# (positioning is all relative to some point in time)
+
+# 4
+# "self.x" and "self.y" returns the position of the widget ("CustomWidget" in this example) 
+# 
+
+# 5
+# As you can see, "root" does exactly the same thing as "self" IN THIS CASE (refer to #8 to get a more detailed understanding)
+
+# 6
+# Size is completely independent of other elements
+
+# 7
+# Again, the position is based off from root (which is CustomWidget with its origin/position on (0, 0))
+
+# 8 
+# This will actually throw an error
+# The reason why "self" doesn't work is because when we created "CustomWidget", we explicitly passed in an x and y value
+# with the position variable ("pos=(100,100)"). That means when we try to access "self.x" and "self.y", it will return
+# the values that were passed into the position value. However, "Button" is a new widget and therefore does not know 
+# the values of the position in CustomWidget/does not have an x or y value assigned to it explicitly. What we can do instead
+# is use the root elements (the root would be the parent class) to get those x and y values.
+
+# 9
+# Color is based off of RGBA (red, green, blue, alpha) (alpha is transparency) 

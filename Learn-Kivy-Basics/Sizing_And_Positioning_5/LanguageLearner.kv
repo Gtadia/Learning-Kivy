@@ -1,0 +1,51 @@
+#:kivy 2.1.0
+<GameScreen>:
+    FloatLayout: 
+        size: root.width, root.height
+        pos: 0, 0
+
+        # 1
+        GridLayout:
+        # 2
+            pos_hint: {"x": 0.1, "y": 0.3}
+            size_hint: None, None
+            size: root.width * 0.4, root.width * 0.4    # 3
+
+            cols: 3     # 4
+
+            Button:     
+            # 5
+                text: "Button 1"
+            Button:
+                text: "Button 2"
+            Button:
+                text: "Button 3"
+            Button:
+                text: "Button 4"
+
+        
+        
+        
+# 1 
+# We can add layouts inside of another layout, therefore making this GridLayout a widget of FloatLayout
+
+# 2
+# In order to use GridLayout, we have to specify the numbers of rows and columns that we want and the widgets inside are set up
+# automatically in the order that we add them. 
+# However, Gridlayouts are less customizable than the FloatLayout and there can be some unexpected behaviors if we're not
+# ready for them/not really paying too much attention to our code. 
+
+# 3
+# We're doing this instead of using "size_hint" because we want a square, not a reactangle
+# NOTE: we're using "root.width" for both the x and y axis to make the square but this assumes that width is smaller than 
+# the height (like on a smart phone) or else the square is most likely going to have some parts of it go off the screen.
+
+# 4
+# Even though we are going to add 4 buttons (which are created below this line of code), since we specified that we are 
+# going to have 2 cols, it will put the first 2 buttons in the first row and create another row to put the next two buttons 
+# in that newly created row. 
+# REMEMBER: The same logic applies if we declare the number of rows instead of the columns. 
+
+# 5
+# Buttons have a position of the bottom left corner of the PARENT and have a size_hint of (1, 1). However, with GridLayout, 
+# each button will fill their current row and column but not go past that. 
