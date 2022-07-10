@@ -1,0 +1,81 @@
+GridLayoutExample:
+
+<GridLayoutExample@GridLayout>:
+    # 1
+    rows: 2
+    cols: 3 # 2
+    Button:
+        text: "A"
+        size_hint: 0.5, 0.1 # 3
+    Button:
+        text: "B"
+    Button:
+        text: "C"
+    Label:
+        text: "D"
+        size_hint: 0.5, 0.1 # 4
+    BoxLayoutExample:
+    # 5
+    Button:
+        text: "F"
+
+
+<BoxLayoutExample>:
+    BoxLayout:
+        orientation: "vertical" 
+        Button:
+            text: "A"
+            size: "400dp", "200dp"  
+            size_hint: 0.8, 0.5 
+        Button: 
+            text: "B"
+            size_hint: None, None 
+            size: 100, 150
+        Button:
+            text: "C"
+            size_hint: None, None
+            height: "100dp"
+            width: "60dp" 
+        Label:
+            text: "D" 
+            size_hint: 0.5, None
+            height: "60dp" 
+        Button:
+            text: "E"
+            size_hint: 0.5, None
+            height: "60dp" 
+            pos_hint: {"x": 0.5, "y": 0} 
+        BoxLayout:
+            orientation: "horizontal" 
+            spacing: "10dp"
+            Button:
+                text: "1"
+            Button: 
+                text: "2"
+            Button:
+                text: "3"
+
+
+# 1
+# We can create a custom widget inside of the .kv file/we don't need to create a class for a custom widget inside of the python
+# file. However, if you're going to add anything other than "pass" or certain attributes that are inn the kivy library, then
+# we're going to need the python class.
+
+# 2
+# When we use GridLayout, we have to define at least one of the two following values
+# rows or cols
+
+# 3 
+# You can see that size_hint didn't change the size of the button because the buttons in that same column/row didn't change 
+# as well so it didn't change anything.
+
+# 4
+# This "D" button is in the same column as the "A" button. So if we change the size_hint by the same amount, both the 
+# "A" button and the "D" button's width will decrease by 50% (but the height won't change by 10%)
+# 
+# WE COULD ALSO GIVE IT A "size"/"width" as long as we make the x-axis on size_hint equal to "None" (size will only change 
+# the width because we're chanigng the size of every button/element in the same column)
+
+# 5
+# You can incorporate custom widgets that you've created inside of other widgets
+# (It doesn't have to be widgets that are built into the kivy library)

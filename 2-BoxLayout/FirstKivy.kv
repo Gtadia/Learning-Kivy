@@ -31,18 +31,22 @@ BoxLayoutExample:
 
         BoxLayout:
         # 10
-            Label:
+            orientation: "horizontal" # 11 
+            spacing: "10dp" # 12
+            Button:
                 text: "1"
             Button: 
                 text: "2"
-            Label:
+            Button:
                 text: "3"
 
     
 
 
 # 1
-# You can define the layout inside of the .kv file
+# You can define the layout inside of the .kv file.
+# However, if you've already inherited "BoxLayout" from the class in the main python file, then we don't need to define
+# the layout inside of the .kv file.
 
 # 2
 # The default orientation is staking the elements "horizontally"
@@ -81,3 +85,9 @@ BoxLayoutExample:
 
 # 10
 # You can imbed a layout within another layout
+
+# 11
+# This default orientation for BoxLayout
+
+# 12
+# You can add a space in between the elements within THIS boxlayout

@@ -1,0 +1,73 @@
+StackLayoutExample:
+
+<StackLayoutExample>:
+    # 1
+    # 2
+    # orientation: "lr-tb" # 3
+    # padding: ("20dp", "20dp", "20dp", "20dp") # 4
+    # spacing: "20dp", "20dp" # 5
+
+
+    Button:
+        text: "A" # 6
+        size_hint: 0.2, 0.2 # 7
+    Button:
+        text: "B" 
+        size_hint: 0.2, 0.2        
+    Button:
+        text: "C" 
+        size_hint: 0.2, 0.2 
+    Button:
+        text: "D"
+        size_hint: 0.2, 0.2
+    Button:
+        text: "E"
+        size_hint: 0.2, 0.2 
+    Button:
+        text: "F"
+        size_hint: 0.2, 0.2    # 8  
+
+# 1
+# The stacklayout stacks elements like the boxlayout but it has one fundamental difference. 
+# The boxlayout stacks all the elements in only one row/column.
+# The stacklayout stacks all of its elements in MULTIPLE rows/columns. Because of this, you need to specify the size of each  
+# element (and each element can have a different size)
+
+# 2 
+# The reason why the buttons created inside of the main python code itself comes first is because the __init__ function is 
+# called first and the 1-10 buttons were created inside of the __init__ function. After the __init_- funciton is finished,
+# then the .kv file will be executed.
+
+# 3
+# You can adjust the orientation of the stacking for stacklayouts
+# Here's how to change the orientation:
+# lr-tb
+# lr        ==>         left-right      ;       rl          ==>         right-left
+# tb        ==>         top-bottom      ;       bt          ==>         bottom-top
+# 
+# The default orientation is "lr-tb"
+# NOTE: You can also change the orientation within the custom widget class inside the python file.
+
+# 4
+# You can add a padding between the border of the stacklayout (not between each element)
+# The order of the tuple is:
+# (left, top, right, bottom)
+
+# 5
+# You can add a margin/spacing in between each element
+# The ordering goes as follows:
+# horizontal spacing, vertical spacing 
+
+# 6
+# REMEMBER: The properties of elements should never be uppercase
+
+# 7
+# We adjust the size through size_hint
+# The default value for size_hint is (1, 1)
+
+# 8
+# You can see that this element is on a new row because the first row is filled (0.2 * 5 = 1) 
+# However, let's say that if we try to add all the elements to create the first row but we go over 1,
+# then the code will just move that element that's causing the sum of the size_hint's x value to go on the next row.
+# If the element has size_hint over 1 (ex: 1.5), then tha element just gets the entire row for itself (but obviously some
+# parts of the element is going to be off-screen)
