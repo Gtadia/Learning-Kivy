@@ -1,0 +1,56 @@
+BoxLayoutExample:
+# The BoxLayoutExample is going to be the main interface, which means that it will take up the entire window
+
+<BoxLayoutExample>:
+    BoxLayout:
+        # 1 
+        orientation: "vertical" # 2
+        Button:
+            text: "A"
+            size: "400dp", "200dp"  # 3
+        Button: 
+            text: "B"
+        Button:
+            text: "C"
+        Label:
+            text: "D" # 4
+
+<MainWidget>: 
+    Button:
+        text: "Hello"
+        size: 400, 200
+        pos: 100, 200
+
+    Button:
+        text: "Hello2"
+        size: "400dp", "200dp" 
+        pos: "10dp", "100dp"
+
+    Button:
+        text: "Hello 3"
+        size: "100dp", "80dp"
+        pos: "100dp", "300dp"
+        color: 0, 1, 0, 1
+
+    Label:
+        text: "Label"
+        size: "100dp", "90dp"
+        pos: "200dp", "500dp"
+        color: 0, 1, 0, 1
+
+    
+
+
+# 1
+# You can define the layout inside of the .kv file
+
+# 2
+# The default orientation is staking the elements "horizontally"
+
+# 3
+# Within a widget, you can resize and set the position of the elements such as widgets. This is because widgets do not handle
+# the position of the size of the elements. However, layouts set the position to origin of their repsective "block" and set 
+# the size_hint to (1, 1)   
+
+# 4
+# BoxLayout accepts any type of element/widget (it doesn't all have to be the same type) 
