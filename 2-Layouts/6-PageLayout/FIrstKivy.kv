@@ -1,0 +1,124 @@
+# The page layout makes it possible to go from right to left to go to the next element or to go back to the previous element.
+# It doesn't have to be elements though (it can be entirely different widgets as well)
+
+PageLayoutExample:
+
+
+<PageLayoutExample@PageLayout>: 
+    MainWidget:
+    Button: 
+        size_hint: 1, 1
+        text: "Hello There"
+    Label: 
+        text: "How are you doing today?"
+        background_color: 1, 1, 1, 1
+    ScrollViewExample:
+    StackLayoutExample: 
+    BoxLayoutExample:
+    AnchorLayoutExample:
+    
+    
+# Scroll View Widge 
+<ScrollViewExample@ScrollView>: # 1
+    StackLayoutForScrollLayoutExample: 
+        size_hint: 1, None 
+        height: self.minimum_height 
+
+
+# Stack Layout Widget
+<StackLayoutExample>:
+    Button:
+        text: "A"
+        size_hint: 0.2, 0.2
+    Button:
+        text: "B" 
+        size_hint: 0.2, 0.2        
+    Button:
+        text: "C" 
+        size_hint: 0.2, 0.2 
+    Button:
+        text: "D"
+        size_hint: 0.2, 0.2
+    Button:
+        text: "E"
+        size_hint: 0.2, 0.2 
+    Button:
+        text: "F"
+        size_hint: 0.2, 0.2
+
+
+# Box Layout Widget
+<BoxLayoutExample>:
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "A"
+            size: "400dp", "200dp"
+            size_hint: 0.8, 0.5
+        Button: 
+            text: "B"
+            size_hint: None, None
+            size: 100, 150
+        Button:
+            text: "C"
+            size_hint: None, None
+            height: "100dp"
+            width: "60dp"
+        Label:
+            text: "D"
+            size_hint: 0.5, None
+            height: "60dp"
+        Button:
+            text: "E"
+            size_hint: 0.5, None
+            height: "60dp" 
+            pos_hint: {"x": 0.5, "y": 0}
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: "10dp"
+            Button:
+                text: "1"
+            Button: 
+                text: "2"
+            Button:
+                text: "3"
+
+
+# Main Widget 
+<MainWidget>:
+    Button:
+        text: "Hello"
+        size: 400, 200
+        pos: 100, 200
+    Button:
+        text: "Hello2"
+        size: "400dp", "200dp"
+        pos: "10dp", "100dp"
+    Button:
+        text: "Hello 3"
+        size: "100dp", "80dp"
+        pos: "100dp", "300dp"
+        color: 0, 1, 0, 1
+    Label:
+        text: "Label"
+        size: "100dp", "90dp"
+        pos: "200dp", "500dp"
+        color: 0, 1, 0, 1
+
+
+# Anchor Layout Widget
+<AnchorLayoutExample>:  
+    anchor_x: "center"
+    anchor_y: "top" 
+    BoxLayout:
+        size_hint: (0.2, 0.2)
+        Button:
+            text: "A"
+        Button:
+            text: "B"
+
+
+
+# 1
+# Each widget/element is transparent so even though we put another page on top of the first element, it doesn't completely
+# cover previous element below it. 

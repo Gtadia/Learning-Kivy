@@ -1,0 +1,30 @@
+ScrollViewExample:
+
+<ScrollViewExample@ScrollView>: 
+    # 1
+    StackLayoutExample: 
+        size_hint: 1, None  # 2
+        # height: 4000 # 3
+        height: self.minimum_height # 4
+
+
+<StackLayoutExample>:
+
+
+# 1
+# The scrollview can only take in one child
+
+# 2
+# The size_hint of (1, None) will result in a the stack layout taking up 100% of the ScrollViewExample's size but not bound
+# the height to the ScrollViewExample. However, instead we are specifying the height ourselves. If the height of 
+# StackLayhoutExample is greater than the total height of the parent (ScrollViewExample), then ScrollView will create a 
+# scroll bar for however tall the element is. 
+# 
+# You can do the same with horizontal scrolling (size_hint: None, 1)
+
+# 3 
+# We can manually set the height of the scroll element but that's not a very effective way of creating a scrolling animation.
+# This is because the height can either be too much or too little
+
+# 4 
+# Within StackLayout, it computes and saves the height that all of its elements takes up as "mimimum_height"
