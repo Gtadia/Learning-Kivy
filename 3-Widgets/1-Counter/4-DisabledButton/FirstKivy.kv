@@ -1,0 +1,28 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp" 
+        
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+        disabled: not root.count_enabled # 1
+    Label: 
+        text: root.my_text 
+
+
+
+# 1
+# "disbaled" is an attribute that specifies whether or not the button is avaliable to be clicked.
+# The default value is "False"
+# When "True", the button will be grayed out and you won't be able to click it anymore.
+# 
+# Also, we can use the keyword "not" in order to switch boolean values inside of the .kv file
+
+# REMEMBER:
+# You can use the "disabled" attribute/property on any other elements that have user interactions.

@@ -1,11 +1,11 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty # You have to import BooleanPrperty in order to use it
 
 class WidgetsExample(GridLayout):
     count = 0
-    count_enabled = False
+    count_enabled = BooleanProperty(False) # We can save this property inside of WidgetsExample so that we can access inside of the .kv file
     my_text = StringProperty("Hello! This is from the main Python file")
 
     
