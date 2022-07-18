@@ -1,9 +1,20 @@
 WidgetsExample:
 
-<WidgetsExample@GridLayout>:
+<WidgetsExample>:
     cols: 3
     Button: 
         text: "Click here"
+        on_press: root.on_button_click()# 1
     Label: 
-        text: "Hello"
+        text: root.my_text # 2
 
+
+# 1 
+# The button has a property called "on_press" where you pass in a Python function as its property 
+# characteristic/value so that it can do whatever you want it to do using Python (you have to do this
+# through the "WidgetsExample" function in the main Python file).
+
+# 2
+# "text" is binding, meaning that the text for the label always going to be whatever it's set to,
+# which in this case is "root.my_text". The text will adaquately change if, for example, root.my_text 
+# changes.
