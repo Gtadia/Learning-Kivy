@@ -1,0 +1,42 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+    # 1
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp" 
+        
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+        disabled: not root.count_enabled 
+    Label: 
+        text: root.my_text 
+    
+    Switch:
+        size_hint: None, 1
+        width: "100dp" # 2
+        on_active: root.on_switch_active(self) # 3 
+        active: True # 4
+
+
+
+# 1 
+# The mostly works like the ToggleButton
+    # It switches between the on and off state
+# However, it will have a different display/look to it
+# AND it will have different properties 
+
+
+# 2
+# You can adjust the size of the switch like any other element
+
+# 3 
+# on_active returns the state of the switch
+# In other words, it's the "on_state" attribute of switches
+
+# 4 
+# You can change the default switch position from "False" to "True" 

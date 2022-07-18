@@ -1,0 +1,77 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp" 
+        
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+        disabled: not root.count_enabled 
+    Label: 
+        text: root.my_text 
+    
+    Switch:
+        size_hint: None, 1
+        width: "100dp" 
+        on_active: root.on_switch_active(self) 
+        
+        active: True # Exercise 
+        id: enable_slider_switch # Exercise
+
+
+    Slider:
+        # 1
+        minimum: 0
+        maximum: 100 # 2
+        value: 50 # 3
+        orientation: "vertical" # 4
+        on_value: root.on_slider_value(self) # 5
+
+        id: my_slider # 7(a)
+
+        disabled: not enable_slider_switch.active # Exercise
+
+
+    Label: 
+        # text: root.slider_value_txt # 6
+        text: str(int(my_slider.value)) # 7(b)
+        font_size: "80dp"
+
+
+
+# 1
+# The slider widget can be a horizontal bar to select a value between a minimum (generally 0) 
+# and a maximum (generally 100)
+# It can be a vertical bar as well
+
+# 2 
+# You can choose the minimum and maximum values
+
+# 3 
+# By default, the slider starts at the minimum value but "value" enables you to choose the starting
+# value.
+
+# 4
+# You can choose the orientation of the slider using the "orientation" attribute
+
+# 5
+# "on_value" is the attribute that is used to get the value of the slider
+
+# 6 
+# You can display the value of the slider as such
+
+# 7
+# However, you can use "id", you are passing in the widget/element under a specific variable 
+# name. So when you use that variable name somewhere else, you are accessing all the attributes
+# that are stored under that specific widget/element. 
+#
+# So we were able to use the ID in order to access the "value" of the slider all inside of the .kv
+# file. 
+
+# EXERCISE
+# This was an exercise to use only .kv to enable the switch to enable and disable the slider.
