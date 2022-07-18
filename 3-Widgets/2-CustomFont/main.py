@@ -4,11 +4,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.properties import StringProperty
 
 class WidgetsExample(GridLayout):
-    """
-     Do we need to define the "__init__" function
-        No, because we're not really going to create graphics for the button on the main Python file but
-        rather we're going to create graphics on the kivy file.
-    """
     count = 0
     my_text = StringProperty("Hello! This is from the main Python file") # StringProperty has to be imported 
     def on_button_click(self): # This is the function that we're going to pass into "on_press" in the .kv file

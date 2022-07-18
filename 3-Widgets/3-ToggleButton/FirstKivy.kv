@@ -1,0 +1,38 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+        # 1
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self) # 2
+        size_hint: None, 1
+        width: "100dp" # 3
+        
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+    Label: 
+        text: root.my_text 
+
+
+
+
+# 1
+# The "Toggle Button" is like a button but it has an on/off state, such like a switch. 
+# When you create a toggle button, it looks physically the same as a regular button, except
+# for the fact that it stays clicked when you click it. 
+
+# 2
+# Instead of "on_press" like the regular button, the "on_state" attribute will execute a function
+# when it is "on"/is clicked and it stays highlighted
+# 
+# If we pass in "self", it will turn in the "ToggleButton" 
+# Using this, we can go to the Python file and run <parameter name>.state to get the state of the
+# toggle function.
+# 
+# down      = activated     = on
+# normal    = deactivated   = off
+
+# 3
+# You can resize the ToggleButton like any other button

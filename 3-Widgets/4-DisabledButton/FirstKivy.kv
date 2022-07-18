@@ -1,0 +1,18 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp" 
+        
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+    Label: 
+        text: root.my_text 
+
+
+
