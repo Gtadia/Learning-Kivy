@@ -1,0 +1,83 @@
+WidgetsExample:
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp"   
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+        disabled: not root.count_enabled 
+    Label: 
+        text: root.my_text 
+    Switch:
+        size_hint: None, 1
+        width: "100dp" 
+        on_active: root.on_switch_active(self) 
+        active: True
+        id: enable_slider_switch
+    Slider:
+        minimum: 0
+        maximum: 100 
+        value: 50 
+        orientation: "vertical" 
+        on_value: root.on_slider_value(self) 
+        id: my_slider
+        disabled: not enable_slider_switch.active
+    BoxLayout:
+        orientation: "vertical"
+        Label: 
+            text: str(int(my_slider.value)) 
+            font_size: "80dp"
+        ProgressBar:
+            max: 100 
+            value: my_slider.value 
+    
+
+    TextInput: 
+        # 1
+        size_hint: None, 1
+        width: "100dp" # 2
+        text: "Boo" # 3
+        id: my_text_input # 4(a)
+        multiline: False # 5
+        on_text_validate: root.on_text_validate(self) # 6(a)
+
+    Label: 
+        text: f"Something said: {root.my_text_input_text}" # 4(b)  # 6(b)    # 7 
+
+    
+
+
+# 1
+# This is how to get the text input inside of kivy
+
+# 2 
+# You can still adjust the size of the widget like any other widget
+
+# 3
+# By using "text", we can have the text box start off with a default text.
+
+# 4 
+# TextInput stores the text that is currently inside of the text box (whether that be 
+# from a user or the default text), under the "text" attribute.
+# (It even copies the new lines)
+
+# 5 
+# Currently, when you press the enter button, you are able to enter a new line
+# because the default value for "multiline" is "True"
+# 
+# If you set it to "False", then everything goes in one line (and when you press enter, it tabs you 
+# out of the text box). 
+
+# 6
+# "on_text_validate" takes in a function that it excutes when you press enter while you're on the 
+# text box.
+# The function inside of the main python folder sets the varaible "my_text_input_text" to the 
+# text of the input. 
+
+# 7 
+# REMEMBER: f-strings work inside of .kv file
