@@ -1,0 +1,87 @@
+ImagesExample:
+
+<ImagesExample@GridLayout>:
+    cols: 3
+    Image:
+    # 1
+        source: "Images/Minecraft_painting.jpeg" # 2
+
+    Image:
+        source: "Images/Minecraft_painting.jpeg"
+        allow_stretch: True # 3
+
+    Image:
+        source: "Images/Minecraft_painting.jpeg"
+        allow_stretch: True
+        keep_ratio: False # 4
+    
+
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton: 
+        text: "Toggle Button"
+        on_state: root.on_toggle_button_state(self)
+        size_hint: None, 1
+        width: "100dp"   
+    Button: 
+        text: "Click here"
+        on_press: root.on_button_click()
+        disabled: not root.count_enabled 
+    Label: 
+        text: root.my_text 
+    Switch:
+        size_hint: None, 1
+        width: "100dp" 
+        on_active: root.on_switch_active(self) 
+        active: True
+        id: enable_slider_switch
+    Slider:
+        minimum: 0
+        maximum: 100 
+        value: 50 
+        orientation: "vertical" 
+        on_value: root.on_slider_value(self) 
+        id: my_slider
+        disabled: not enable_slider_switch.active
+    BoxLayout:
+        orientation: "vertical"
+        Label: 
+            text: str(int(my_slider.value)) 
+            font_size: "80dp"
+        ProgressBar:
+            max: 100 
+            value: my_slider.value 
+    TextInput:
+        size_hint: None, 1
+        width: "100dp"
+        text: "Boo"
+        id: my_text_input
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label: 
+        text: f"Something said: {root.my_text_input_text}"
+
+
+
+
+# 1 
+# This is the image widget
+
+# 2
+# "source" allows you to type in the directory or the URL of the image that you want to display
+
+# 3
+# When you resize the window, the image gets resized accordingly so the entire image is show 
+# within the size of the parent. However, when you expand the iamge, the image doesn't get 
+# bigger than its original resolution/original size.
+#
+# This is what "allow_stretch" hopes to resolve. 
+# allow_stretch allows the iamge to stretch beyond it's original size.
+# (It will continue stretching until it reaches the layout borders)
+
+# 4
+# "keep_ratio" allows the image to have the same ratio even when the size of the widgets changes.
+# However, in order to use this property, we need to enable "allow_stretch" as well. 
+#
+# Therefore, the default behavior will try to fill the entire widget size.
