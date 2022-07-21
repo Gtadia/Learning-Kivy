@@ -1,6 +1,6 @@
 #:kivy 2.1.0
 
-CanvasExample2:
+CanvasExample3:
 
 #:set sideLength dp(150)
 
@@ -19,6 +19,7 @@ CanvasExample2:
             points: (0, 0, self.width/4, 100, self.width/2, 0, 3 * self.width/4, 100, self.width, 0) # 3(b)
             width: 2 # 4
 
+# Exercise
 <CanvasExample2>:
     canvas:
         Line:
@@ -27,6 +28,12 @@ CanvasExample2:
         Line: 
             points:(self.width/2, self.height, self.width/2, 0) 
             width: 2
+# Exercise
+
+
+<CanvasExample3>:
+    canvas:
+
 
 # 1
 # The "Line" widget allows us to create lines
