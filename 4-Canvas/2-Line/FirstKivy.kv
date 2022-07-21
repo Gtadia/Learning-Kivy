@@ -1,57 +1,46 @@
 #:kivy 2.1.0
 
-CanvasExample1:
-# Main Interface
+CanvasExample2:
 
-# 1
 #:set sideLength dp(150)
 
 <CanvasExample1>:
     canvas: 
-        # 2
         Rectangle: 
-            # 3
-            # pos: dp(100), dp(200) # 4
-            # pos: self.center # 5
-            pos: self.center_x - sideLength/2, self.center_y - sideLength/2 # 6
+            pos: self.center_x - sideLength/2, self.center_y - sideLength/2
             size: dp(200), dp(200) 
-
         Ellipse:
-            # 7
             pos: 200, 500
             size: sideLength, sideLength/2
 
+        Line: 
+            # 1
+            # points: (0, 0, 100, 100, 200, 0, self.width, 100) # 2 # 3(a)
+            points: (0, 0, self.width/4, 100, self.width/2, 0, 3 * self.width/4, 100, self.width, 0) # 3(b)
+            width: 2 # 4
 
+<CanvasExample2>:
+    canvas:
+        Line:
+            points:(0, self.height/2, self.width, self.height/2)
+            width: 2
+        Line: 
+            points:(self.width/2, self.height, self.width/2, 0) 
+            width: 2
 
-
-# 1 
-# It's possible to define and initialize variables within the .kv file, as such.
+# 1
+# The "Line" widget allows us to create lines
 
 # 2
-# It is possible to add "canvas" to any widget ro layout (because CanvasExample1 is inheriting from
-# Widget and all the other layouts are children of the widget class)
+# You create the line by defining 2 points (x1, y1, x2, y2) and kivy will draw a linear line that 
+# connects these two points together
+#
+# However, you can continue adding more points and kivy will create another line segment to that point
+# (x1, y1, x2, y2, x3, y3, etc.)
 
 # 3
-# "Rectangle creates a rectangle on the canvas
-# The default values for rectangle are:
-#       pos: 0, 0
-#       color: white
-#       size: 100, 100
+# We can have the line depend on the size of the iwndow/parent with self.width/self.height.
+# (b): Using this, we can create a window dependent zig-zag
 
 # 4
-# This is another way of relaying size/position data in dp
-
-# 5
-# This centers the bottom left corner of the rectangle in the center, not the center of the rectangle 
-# in the center.
-
-# 6
-# NOTE: self.center_x and self.center_y just splits self.center into its x and y variables
-# We are subtracting by half the width and the height of the rectangle so that we actually center
-# it.
-
-# 7 
-# This is how you create an ellipse in the .kv file
-
-# 8
-# 
+# "width" determines the thickness of the line (in other words, it bolds it)
