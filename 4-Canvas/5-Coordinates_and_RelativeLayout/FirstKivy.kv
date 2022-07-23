@@ -1,0 +1,184 @@
+#:kivy 2.1.0
+
+CanvasExample6Exercise:
+
+<CanvasExample6>:
+    
+    # Button: 
+    #     # 1
+    #         canvas:
+    #             Rectangle: 
+    #         text: "A"
+
+
+
+    # Button: 
+    #     canvas.before:
+    #     # 2(a)
+    #         Rectangle: 
+    #     text: "A"
+    #     pos: 100, 100 # 3(a)
+
+    
+
+    # Button: 
+    #     canvas.after:
+    #     # 2(b)
+    #         Rectangle: 
+    #     text: "B"
+
+
+
+    # BoxLayout:
+    #     canvas:
+    #         Rectangle:
+    #     pos: 100, 100 # 3(b)
+
+
+
+
+    # RelativeLayout:
+    #     canvas: 
+    #         Rectangle:
+    #     pos: 100, 100 # 3(c)
+
+
+
+    # BoxLayout: 
+    #     size: root.size # 4
+    #     Widget:
+    #         # 5
+    #         canvas: 
+    #             Color: 
+    #                 rgb: 0, 1, 0
+    #             Rectangle:
+    #                 size: self.size # 6
+    #     Widget:
+    #         canvas: 
+    #             Color: 
+    #                 rgb: 0.5, 0.7, 1
+    #             Rectangle:
+    #                 size: self.size 
+    #                 pos: self.pos # 7
+
+
+    BoxLayout: 
+        size: root.size 
+        Widget:
+            canvas: 
+                Color: 
+                    rgb: 0, 1, 0
+                Rectangle:
+                    size: self.size 
+
+
+        RelativeLayout:
+        # 8
+            canvas: 
+                Color: 
+                    rgb: 0.5, 0.7, 1
+                Rectangle:
+                    size: self.size 
+
+
+        
+
+# 1
+# Button is a widget, so we can have a canvas inside of it 
+# And the canvas itself is displaying a rectangle 
+# 
+# However, when you run this, you can see that the Rectangle is displayed on TOP of the button 
+#   This is because the order of the instruction matters
+
+
+# 2
+# (a)
+# ".before" tells the canvas to displayed BEFORE the button 
+# In other words, it renders first then the button, therefore having the button on top of the rectangle
+#
+# (b) 
+# ".after" 
+# basically does the opposite of ".before" 
+
+# 3
+# When we are changing the attributes of the button, only the button changes position and the rectangle
+# stays where it is.
+#
+# To understand why this is happening, you have to understand this one thing...
+# The canvas is ALWAYS drawn position at (0, 0)
+# The only exception being RelativeLayout
+#
+# (b)
+# It doesn't matter which widget (including layouts) you use, the canvas will always be at (0, 0)
+# 
+# (c)
+# Except with RelativeLayout, which actually carries the canvas with it
+#   The reason why this works is because the canvas position is actually still at (0, 0) 
+#   It's just that RelativeLayout MOVED the entire origin point of the canvas space to (100, 100)
+#   (So the canvas still thinks that it's at the origin)
+
+
+# 4
+# The buttons are taking up only a space of (100, 100). 
+# This is because CanvasExample6 is inherting from a widget, not a layout:
+# Widgets, unlike layouts, does not take care of the position or the size of its children. 
+#   That's why widgets have a default size of (100, 100)
+#
+# If you want a widget to take up the entire size of the window, you have to explicitly state it as such
+
+# 5
+# If you just have "Widget", then you create an empty widget with nothing inside of it
+# 
+# However, you can add stuff inside of "Widget" so essentially, you are making a custom widget
+#   (you can make "custom" widgets with a prexisiting widget, such as the Button-canvas examples but
+#   an empty widget allows you to create a custom widget from scratch)
+
+# 6
+# NOTICE how we're not using "root.size" because root is the size of the entire window 
+# (the size of "CanvasExample6")
+# We're using self.size because we only want to use the size of empty widget
+
+# 7 
+# Now that we have 2 canvases, we can see that since the canvas ALWAYS starts at (0, 0), the blue \
+# colored canvas is on top of the green canvas from before
+# 
+# We can fix this using "self.pos" so that we get the position of the widget (which, in this case
+# is "Widget").
+
+# 8
+# We can do the same thing as described in footnote 7 by using:
+# RelativeLayout
+# (Just replace "Widget" with "RelativeLayout)
+# 
+# This works because the boxlayout will move the Widget and the RelativeLayout to 2 separate spaces
+# and the RelativeLayout will just drag the canvas with it. 
+
+
+
+
+
+
+# EXERCISE
+<CanvasExample6Exercise>:
+    Widget: 
+        canvas:
+            Color:
+                rgb: 0, 0, 1
+            Rectangle:
+                size: self.size
+    
+    RelativeLayout:
+        canvas: 
+            Color: 
+                rgb: 1, 1, 1
+            Rectangle:
+                size: self.size
+    
+
+    RelativeLayout:
+        canvas: 
+            Color:
+                rgb: 1, 0, 0
+            Rectangle: 
+                size: self.size
+# EXERCISE
