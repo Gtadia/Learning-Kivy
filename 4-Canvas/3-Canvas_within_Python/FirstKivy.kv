@@ -1,25 +1,19 @@
 #:kivy 2.1.0
 
-CanvasExample3:
+CanvasExample4:
 
 #:set sideLength dp(150)
-
 <CanvasExample1>:
     canvas: 
         Rectangle: 
             pos: self.center_x - sideLength/2, self.center_y - sideLength/2
             size: dp(200), dp(200) 
-        Ellipse:
+        Ellipse: 
             pos: 200, 500
             size: sideLength, sideLength/2
-
         Line: 
-            # 1
-            # points: (0, 0, 100, 100, 200, 0, self.width, 100) # 2 # 3(a)
-            points: (0, 0, self.width/4, 100, self.width/2, 0, 3 * self.width/4, 100, self.width, 0) # 3(b)
-            width: 2 # 4
-
-# Exercise
+            points: (0, 0, self.width/4, 100, self.width/2, 0, 3 * self.width/4, 100, self.width, 0)
+            width: 2
 <CanvasExample2>:
     canvas:
         Line:
@@ -28,56 +22,29 @@ CanvasExample3:
         Line: 
             points:(self.width/2, self.height, self.width/2, 0) 
             width: 2
-# Exercise
-
-
 <CanvasExample3>:
     canvas:
-        Line: 
-            circle: (200, 200, 100) # 6(a)
-            width: 2
         Color: 
-            rgba: 1, 0, 0, 0.3 # 5
+            rgba: 1, 0, 0, 0.3 
         Line: 
-            ellipse: (500, 300, 100, 200) # 6(b)
+            circle: (200, 200, 100) 
+            width: 2
+        Line: 
+            ellipse: (500, 300, 100, 200) 
             width: 4
-        Line:
-            rectangle: (800, 100, 300, 200) # 6(c)
+        Color: 
+            rgb: 0, 1, 0
+        Line:  
+            rectangle: (800, 100, 300, 200) 
             width: 8
 
-        
+
+# We're creating a button inside of the kivy file that moves a rectangle around whne we click it   
+<CanvasExample4>:
+    Button: 
+        pos: 100, 400
+        text: "Move"
+        on_press: root.on_button_click() # This will run the function that actually moves the rectangle 
 
 
-# 1
-# The "Line" widget allows us to create lines
-
-# 2
-# You create the line by defining 2 points (x1, y1, x2, y2) and kivy will draw a linear line that 
-# connects these two points together
-#
-# However, you can continue adding more points and kivy will create another line segment to that point
-# (x1, y1, x2, y2, x3, y3, etc.)
-
-# 3
-# We can have the line depend on the size of the iwndow/parent with self.width/self.height.
-# (b): Using this, we can create a window dependent zig-zag
-
-# 4
-# "width" determines the thickness of the line (in other words, it bolds it)
-
-# 5
-# All the shapes/widgets below this "Color" widget is colored red because those widgets will 
-# assume the characteristics defined by the "Color" widget
-# (It's a GLOBAL PROPERTY/ATTRIBUTE)
-# 
-# a = 0.5
-# This means that the widget is 50% transparent
-
-# 6
-# You can create shapes without any infill with "line" then "circle"/"rectangle"/"ellipse"/etc.
-# NOTICE that the shapes are spelled with a LOWERCASE when it's created within the "Line" widget
-# 
-# (a): (center_x, center_y. radius)
-# (b): (center_x, center_y, radius_x, radius_y)
-# (c): (x, y, width, height)
 
